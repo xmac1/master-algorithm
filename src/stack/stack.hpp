@@ -1,3 +1,8 @@
+#ifndef __STACK__
+#define __STACK__
+
+#pragma once
+
 template <typename T>
 class Stack {
     void clear();
@@ -7,3 +12,5 @@ class Stack {
     bool isEmpty();
     bool isFull();  
 };
+
+#endif // __STACK__

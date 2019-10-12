@@ -4,8 +4,6 @@
 #ifndef __LINK_LIST__
 #define __LINK_LIST__
 
-
-
 template <typename T>
 class LinkList : public List<T> {
 private: 

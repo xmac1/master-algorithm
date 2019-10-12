@@ -1,16 +1,6 @@
-#include <stack>
-#include <iostream>
+#include "linkstack.hpp"
 
-using namespace std;
+template <typename T>
+class BinaryTree {
 
-struct BinaryTree
-{
-    
 };
-
-
-void widthFirstTraverse(tree *)
-
-int main() {
-    cout << "hello, world" << endl;
-}

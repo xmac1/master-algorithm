@@ -14,7 +14,7 @@ private:
 public:
     LinkStack(int maxSize) {
         top = nullptr;
-        size = maxSize;
+        size = 0;
     }
     ~LinkStack() {
         clear();

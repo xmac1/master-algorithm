@@ -5,10 +5,9 @@
 
 template <typename T>
 class Link {
-private:
+public:
     T data;
     Link<T> * next;
-public:
     Link(const T info, Link<T> * nextValue = nullptr) {
         data = info;
         next = nextValue;

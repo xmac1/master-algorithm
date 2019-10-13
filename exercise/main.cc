@@ -1,14 +1,14 @@
 #include <iostream>
 #include "linkstack.hpp"
+#include "expr.hpp"
+#include <string>
 
 int main() {
-    LinkStack<int> s = LinkStack<int>(19);
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s.push(4);
-    s.push(5);
-    int t;
-    s.Top(t);
-    std::cout << "stack top: " << t << std::endl;
+    std::string inFix = "22 + 5 * 63 / (4 * (6 + 2))";
+    std::string postFix = std::string();
+    bool b = inFix2PostFix(inFix, postFix);
+    if (b) {
+        std::cout << "post fix expression: " << postFix << std::endl;
+    } 
+    return 0;
 }

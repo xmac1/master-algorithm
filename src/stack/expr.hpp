@@ -106,7 +106,13 @@ bool inFix2PostFix(const std::string inFixstring, std::string & postFixstring) {
         }
     }
 
-    for(; stk.size() > 0;  stk.pop()) {out.push_back(stk.top());}
+    for(; stk.size() > 0;  stk.pop()) {
+        if (stk.top() == "(") {
+            std::cout << "unexpected (" << std::endl;
+            return false;
+        }
+    out.push_back(stk.top());
+    }
 
     for (auto & s : out) {
         postFixstring.append(s);

@@ -4,7 +4,7 @@
 #include <string>
 
 int main() {
-    std::string inFix = "22 + 5 * 63 / (4 * (6 + 2))";
+    std::string inFix = "33 * ((24 + 25) / (34 * 2))";
     std::string postFix = std::string();
     bool b = inFix2PostFix(inFix, postFix);
     if (b) {

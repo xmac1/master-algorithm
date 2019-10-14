@@ -47,6 +47,14 @@ public:
         return data[front];
     }
 
+    T & getBack() {
+        if (front == rear) {
+            std::cout << "empty queue" << std::endl;
+            return;
+        }
+        return data[(rear-1)%mSize];
+    }
+
     bool isEmpty() {
         return front == rear; 
     }

@@ -1,7 +1,9 @@
 #include "application.hpp"
 #include <vector>
+#include <string>
+#include <iostream>
 
 int main() {
-    std::vector<int> vec = {1,2,3,4};
-    order_count(vec);
+    std::cout << "gcd: " << gcd(105, 55) <<  std::endl;
+    return 0;
 }

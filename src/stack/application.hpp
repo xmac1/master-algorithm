@@ -51,3 +51,14 @@ void choose(std::stack<typename std::iterator_traits<Iterator>::value_type> s,
         s.pop();
     }
 }
+
+int gcd(int n, int m) {
+    if (m <= n && n % m == 0) {
+        return m;
+    }
+    if (n < m) {
+        return gcd(m, n);
+    } else {
+        return gcd(m, n % m);
+    }
+}

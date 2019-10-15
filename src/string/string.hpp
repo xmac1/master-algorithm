@@ -12,5 +12,5 @@ public:
     String copy(const char * s);
     String insert(const char c, const int index);
     int find(const char c, const int start);
-    string substr(const int s, const int len);
+    String substr(const int s, const int len);
 };

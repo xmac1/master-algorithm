@@ -70,8 +70,8 @@ void BinaryTree<T>::PostOrder(BinaryTreeNode<T>* root) {
 template <typename T>
 void BinaryTree<T>::PreOrderWithoutRecursion(BinaryTreeNode<T> * root) {
     using namespace std;
-    stack<BinaryTreeNode<T>> nodeStack = stack<BinaryTreeNode<T>>();
-    nodeStack.push();
+    stack<BinaryTreeNode<T>*> nodeStack = stack<BinaryTreeNode<T>>();
+    nodeStack.push(root);
     while(nodeStack.size() > 0) {
         BinaryTreeNode<T> * tmp = nodeStack->top();
         nodeStack->pop();
@@ -89,24 +89,26 @@ void BinaryTree<T>::PreOrderWithoutRecursion(BinaryTreeNode<T> * root) {
 template <typename T>
 void InOrderWithoutRecursion(BinaryTreeNode<T> * root) {
     using namespace std;
-    stack<BinaryTreeNode<T>> nodeStack = stack<BinaryTreeNode<T>>();
+    stack<BinaryTreeNode<T>*> nodeStack = stack<BinaryTreeNode<T>>();
     BinaryTreeNode<T> * pointer = root;
     
-    while (pointer != nullptr)
+    while (nodeStack.size() > 0 || pointer)
     {
-        if (pointer->leftChild() != nullptr) {
-            nodeStack.push(pointer->leftChild());
-            pointer = pointer->leftChild();
-            continue;
+        if (pointer) {    
+            nodeStack.push(pointer);
+            pointer = pointer->leftChild();          
+        } else {
+            pointer = nodeStack->top(); 
+            nodeStack.pop();
+            cout << pointer->value << endl;
+            pointer = pointer->rightChild();
         }
-
-        nodeStack.push(pointer);
-
-        if (pointer->leftChild() != nullptr) {
-            nodeStack.push(pointer->leftChild());
-        }
-
     }
-    
+}
 
+template <typename T>
+void PostOrderWithoutRecursion(BinaryTreeNode<T> * root) {
+    using namespace std;
+    stack<BinaryTreeNode<T>*> nodeStack = stack<BinaryTreeNode<T>*>();
+    
 }

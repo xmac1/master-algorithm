@@ -106,9 +106,24 @@ void InOrderWithoutRecursion(BinaryTreeNode<T> * root) {
     }
 }
 
+enum Tags {
+    Left,
+    Right
+};
+
+template <typename T>
+class StackElemment {
+public:
+    Tags tag;
+    BinaryTreeNode<T> * pointer;
+};
+
 template <typename T>
 void PostOrderWithoutRecursion(BinaryTreeNode<T> * root) {
     using namespace std;
     stack<BinaryTreeNode<T>*> nodeStack = stack<BinaryTreeNode<T>*>();
-    
+    BinaryTreeNode<T> * pointer = root;
+    while(nodeStack.size() > 0 || pointer) {
+
+    }
 }

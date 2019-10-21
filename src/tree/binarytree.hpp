@@ -1,5 +1,6 @@
 #include <stack>
 #include <iostream>
+#include <queue>
 
 template <typename T>
 class BinaryTreeNode {
@@ -44,6 +45,8 @@ public:
     
     void PreOrderWithoutRecursion(BinaryTreeNode<T> * root);
     void InOrderWithoutRecursion(BinaryTreeNode<T> * root);
+
+    void LevelOrder(BinaryTreeNode<T> * root);
 
 };
 
@@ -144,5 +147,25 @@ void PostOrderWithoutRecursion(BinaryTreeNode<T> * root) {
             pointer = nullptr;
         }
         
+    }
+}
+
+template <typename T>
+void BinaryTree<T>::LevelOrder(BinaryTreeNode<T> * root) {
+    BinaryTreeNode<T> * pointer = root;
+    std::queue<BinaryTreeNode<T>*> nodeQueue;
+    if (pointer) {
+        nodeQueue.push(pointer);
+    }
+    while (nodeQueue.size() > 0)  
+    {
+        pointer = nodeQueue.pop();
+        std::cout << pointer->value << std::endl;
+        if (pointer->leftChild()) {
+            nodeQueue.push(pointer->leftChild());
+        }
+        if (pointer->rightChild()) {
+            nodeQueue.push(pointer->rightChild());
+        }
     }
 }

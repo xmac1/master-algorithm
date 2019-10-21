@@ -121,9 +121,28 @@ public:
 template <typename T>
 void PostOrderWithoutRecursion(BinaryTreeNode<T> * root) {
     using namespace std;
-    stack<BinaryTreeNode<T>*> nodeStack = stack<BinaryTreeNode<T>*>();
+    stack<StackElemment<T>> nodeStack = stack<StackElemment<T>>();
     BinaryTreeNode<T> * pointer = root;
+    StackElemment<T> element;
     while(nodeStack.size() > 0 || pointer) {
-
+        while (pointer)
+        {
+            element.pointer = pointer;
+            element.tag = Left;
+            nodeStack.push(element);
+            pointer = pointer->leftChild();
+        }
+        element = nodeStack.top();
+        pointer = element.pointer;
+        nodeStack.pop();
+        if (element.tag == Left) {
+            element.tag = Right;
+            nodeStack.push(element);
+            pointer = pointer->rightChild();
+        } else {
+            cout << pointer->value << endl;
+            pointer = nullptr;
+        }
+        
     }
 }

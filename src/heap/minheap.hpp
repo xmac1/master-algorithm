@@ -1,3 +1,5 @@
+#include <iostream>
+
 template <typename T>
 class MinHeap {
 private: 
@@ -35,4 +37,89 @@ MinHeap<T>::MinHeap(const int n) {
 template <typename T>
 bool MinHeap<T>::isLeaf(int pos) const {
     return (pos >= CurrentSize / 2) && (pos < CurrentSize);
+}
+
+template <typename T>
+void MinHeap<T>::BuildHeap() {
+    for (int i = CurrentSize/2-1; i>=0; i--) {
+        SiftDown(i);
+    }
+}
+
+template <typename T>
+int MinHeap<T>::LeftChild(int pos) const {
+    return 2 * pos + 1;
+}
+
+template <typename T>
+int MinHeap<T>::RightChild(int pos) const {
+    return 2 * pos + 2;
+}
+
+template <typename T>
+int MinHeap<T>::Parent(int pos) const {
+    return (pos - 1) / 2;
+}
+
+template <typename T>
+bool MinHeap<T>::Insert(const T& newNode) {
+    if (CurrentSize >= MaxSize) {
+        return false;
+    }
+    heapArray[CurrentSize] = newNode;
+    SiftUp(CurrentSize);
+    CurrentSize++;
+    return true;
+}
+
+template <typename T>
+T& MinHeap<T>::RemoveMin() {
+    if (CurrentSize == 0) {
+        std::cout << "can not remove" << std::endl;
+        return
+    }
+    swap(0, --CurrentSize);
+    if (CurrentSize > 1) {
+        SiftDown(0);
+    }
+    return heapArray[CurrentSize];
+}
+
+template <typename T>
+bool MinHeap<T>::Remove(int pos, T& node) {
+    if (pos < 0 || pos >= CurrentSize) {
+        return false;
+    }
+    node = heapArray[pos];
+    heapArray[pos] = heapArray[--CurrentSize];
+    if (heapArray[pos] < heapArray[Parent(pos)]) {
+        SiftUp(pos);
+    } else {
+        SiftDown(pos);
+    }
+    return true;
+}
+
+template <typename T>
+void MinHeap<T>::SiftUp(int pos) {
+    T value = heapArray[pos];
+    int idx = pos;
+    while (idx > 0 && headArray[Parent(idx)] > value)
+    {
+        heapArray[idx] = heapArray[Parent(idx)];
+        idx = Parent(idx);
+    }
+    heapArray[idx] = value;
+}
+
+template <typename T>
+void MinHeap<T>::SiftDown(int pos) {
+    int i = pos;
+    int left = LeftChild(i);
+    T value = heapArray[pos];
+    while (left < CurrentSize)
+    {
+        
+    }
+    
 }

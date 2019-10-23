@@ -115,11 +115,20 @@ void MinHeap<T>::SiftUp(int pos) {
 template <typename T>
 void MinHeap<T>::SiftDown(int pos) {
     int i = pos;
-    int left = LeftChild(i);
+    int child = LeftChild(i);
     T value = heapArray[pos];
-    while (left < CurrentSize)
+    while (child < CurrentSize)
     {
-        
+        if ((child < CurrentSize - 1) && (heapArray[child] < heapArray[child + 1])) {
+            child = child + 1;
+        }
+        if (value > heapArray[child]) {
+            heapArray[i] = heapArray[child];
+            i = child;
+            child = LeftChild(child);
+        } else {
+            break;
+        }
     }
-    
+    heapArray[i] = value;
 }

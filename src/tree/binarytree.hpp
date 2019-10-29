@@ -5,14 +5,13 @@
 template <typename T>
 class BinaryTreeNode {
     friend class BinaryTree;
-private:
-    T info;
 public:
+    T value;
+    BinaryTreeNode<T> *left, *right;
     BinaryTreeNode();
     BinaryTreeNode(const T & elem);
     BinaryTreeNode(const T & ele, BinaryTreeNode<T> * l, BinaryTreeNode<T> * r);
 
-    T value() const;
     BinaryTreeNode<T> & leftChild() const;
     BinaryTreeNode<T> & rightChild() const;
 
@@ -26,7 +25,7 @@ public:
 template <typename T>
 class BinaryTree {
 private:
-    BinaryTree<T> * root;
+    BinaryTreeNode<T> * root;
 public:
     BinaryTree(){root = null;};
     ~BinaryTree(){DeleteBianryTree(root);}

@@ -1,3 +1,5 @@
+#include <bits/stdc++.h>
+
 class IGraph {
     class Edge;
 public:
@@ -15,6 +17,7 @@ public:
 };
 
 class Edge {
+public:
     int from, to, weight;
     Edge() {from = -1;; to = -1; weight=0;}
     Edge(int f, int t, int w) {from = f; to = t; weight = w;}
@@ -46,6 +49,9 @@ public:
     }
 
     bool IsEdge(Edge oneEdge) {
-        
+        if (oneEdge.weight > 0 && oneEdge.weight < INT_MAX && oneEdge.to > 0) {
+            return true;
+        }
+        return false;
     }
 };

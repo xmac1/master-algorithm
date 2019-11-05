@@ -50,4 +50,20 @@ public:
         }
         return nextEdge;
     }
+
+    void setEdge(int from, int to, int weight) {
+        if (matrix[from][to] <= 0 ) {
+            numEdge++;
+            Indegree[to]++;
+        }
+        matrix[from][to] = weight;
+    }
+
+    void delEdge(int from, int to) {
+        if (matrix[from][to] > 0) {
+            numEdge--;
+            Indegree[to]--;
+        }
+        matrix[from][to] = 0;2
+    }
 };

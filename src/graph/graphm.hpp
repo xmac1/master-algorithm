@@ -64,6 +64,6 @@ public:
             numEdge--;
             Indegree[to]--;
         }
-        matrix[from][to] = 0;2
+        matrix[from][to] = 0;
     }
 };

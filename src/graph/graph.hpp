@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <queue>
+#include <iostream>
 
 class IGraph {
     class Edge;
@@ -91,6 +92,39 @@ void BFS(Graph& G, int v) {
                 G.Mark[vertex] = 1;
                 Q.push(G.ToVertex(e));
             }
+        }
+    }
+}
+
+void TopsortByQueue(Graph& G) {
+    for (int i = 0; i < G.VerticesNum(); i++) {
+        G.Mark[i] = 0;
+    }
+
+    using std::queue;
+    queue<int> Q;
+    for (int i = 0; i < G.VerticesNum(); i++) {
+        if (G.Indegree[i] == 0) {
+            Q.push(i);
+        }
+    }
+    while(!Q.empty()) {
+        int v = Q.front();
+        Q.pop();
+        Visit(G, v);
+        G.Mark[v] = 1;
+        for (Edge e = G.FirstEdge(v); G.IsEdge(e); e = G.NextEdge(e)) {
+            G.Indegree[G.ToVertex[v]]--; // 入度
+            if (G.Indegree[G.ToVertex[v]] == 0) {
+                Q.push(G.ToVertex(e));
+            }
+        }
+    }
+
+    for (int i = 0; i < G.VerticesNum(); i++) {
+        if (G.Mark[i] == 0) {
+            std::cout << "cycle graph" << std::endl;
+            break;
         }
     }
 }

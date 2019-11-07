@@ -53,11 +53,11 @@ public:
         Edge edge;
         edge.from = oneEdge.from;
         Link<ListUnit> * tmp = graList[oneEdge.from].head;
-        while (tmp->next != null && tmp->next->element.vertex <= oneEdge.to) {
+        while (tmp->next != nullptr && tmp->next->element.vertex <= oneEdge.to) {
             tmp = tmp->next;
         }
         if(tmp->next != nullptr) {
-            edge.to = tmp->next->element.to;
+            edge.to = tmp->next->element.vertex;
             edge.weight = tmp->next->element.weight;
         }
         return edge;

@@ -50,6 +50,10 @@ public:
         return numVertex;
     }
 
+    int EdgeNum() {
+        return numEdge;
+    }
+
     bool IsEdge(Edge oneEdge) {
         if (oneEdge.weight > 0 && oneEdge.weight < INT_MAX && oneEdge.to > 0) {
             return true;
